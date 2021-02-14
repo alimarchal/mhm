@@ -99,7 +99,7 @@ class ServeCommand extends Command
                 return [$key => $value];
             }
 
-            return $key === 'APP_ENV'
+            return in_array($key, ['APP_ENV', 'LARAVEL_SAIL'])
                     ? [$key => $value]
                     : [$key => false];
         })->all());
@@ -149,7 +149,7 @@ class ServeCommand extends Command
     }
 
     /**
-     * Check if command has reached its max amount of port tries.
+     * Check if the command has reached its max amount of port tries.
      *
      * @return bool
      */
